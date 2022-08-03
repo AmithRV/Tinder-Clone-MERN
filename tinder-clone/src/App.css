@@ -1,0 +1,52 @@
+* {
+  margin: 0px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  padding: 25px;
+  border-bottom: 1px solid #f9f9f9;
+}
+
+.person_logo {
+  object-fit: contain;
+  height: 40px;
+}
+
+.tinder_logo {
+  object-fit: contain;
+  height: 40px;
+}
+
+.message_logo {
+  object-fit: contain;
+  height: 40px;
+}
+
+.swipeButtons {
+  position: fixed;
+  bottom: 5vh;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.swipeButtons > div {
+  width: 55px;
+  height: 55px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 50%;
+  background-color: white;
+  margin: 0px 40px;
+  box-shadow: 0px 10px 53px 0px rgba(0, 0, 0, 1) !important;
+}
+
+.swipeButon_icon {
+  object-fit: contain;
+  height: 40px;
+}
