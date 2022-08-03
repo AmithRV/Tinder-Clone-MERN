@@ -18,14 +18,6 @@ function TinderCards() {
         };
 
         fetchData();
-
-        // axios.get(`http://localhost:8001/tinder/cards`)
-        // .then(response=>{
-        //     setPeople(response?.data);
-        // })
-        // .catch((error)=>{
-        //     alert('something went wrong');
-        // })
     }, []);
 
     const [lastDirection, setLastDirection] = useState();
