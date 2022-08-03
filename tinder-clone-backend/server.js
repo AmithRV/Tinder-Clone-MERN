@@ -9,9 +9,7 @@ const port = process.env.PORT || 8001;
 const connection_url = 'mongodb+srv://Amith:Amith123@cluster0.all4ehi.mongodb.net/?retryWrites=true&w=majority';
 
 app.use(express.urlencoded());
-// app.use(express.json())
 app.use(cors());  
-
 
 mongoose.connect(connection_url, (error, client) => {
     if (error) {
@@ -19,9 +17,6 @@ mongoose.connect(connection_url, (error, client) => {
     } else {
         console.log('database connected')
     }
-    // useNewUrlParser:true,
-    // useCreateIndex:true,
-    // useUnifideTopology:true
 });
 
 app.get('/', (req, res) => {
@@ -40,7 +35,6 @@ app.get('/tinder/create-card', (req, res) => {
         }
     })
 });
-
 
 app.post('/tinder/cards', (req, res) => {
     const dbCard = req.body;
@@ -64,14 +58,12 @@ app.get('/tinder/cards', (req, res) => {
 })
 
 app.get('*', function (req, res) {
-    // res.send('<span>Sorry, this is an invalid URL.</span>');
     res.writeHead(404, { 'Content-type': 'text/html' })
     res.write(`<div style="display:flex;justify-content: center;height: 100%;align-items: center;">
     <h2>Sorry, this is an invalid URL</h2>
     </div>`)
     res.end();
 });
-
 
 app.listen(port, () => {
     console.log(`server running on port ${port}`);
