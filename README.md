@@ -1,7 +1,7 @@
 # Tinder-Clone-MERN
 
 # CHECKOUT THE COMPLETED PROJECT
- FRONTEND : https://tinder-clone-frontend-d3ea0.web.app
+# FRONTEND : https://tinder-clone-frontend-d3ea0.web.app
 # 
 # BACKEND
 ---
