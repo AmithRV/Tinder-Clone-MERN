@@ -2,15 +2,16 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cards from './dbCards.js';
 import fs from 'fs';
-import Cors from 'Cors';
+import cors from 'cors';
 
 const app = express();
-const port = 8001;
+const port = process.env.PORT || 8001;
 const connection_url = 'mongodb+srv://Amith:Amith123@cluster0.all4ehi.mongodb.net/?retryWrites=true&w=majority';
 
 app.use(express.urlencoded());
 // app.use(express.json())
-app.use(Cors());
+app.use(cors());  
+
 
 mongoose.connect(connection_url, (error, client) => {
     if (error) {
