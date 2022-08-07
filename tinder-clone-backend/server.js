@@ -1,14 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cards from './dbCards.js';
-import fs from 'fs';
 import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 8001;
 const connection_url = 'mongodb+srv://Amith:Amith123@cluster0.all4ehi.mongodb.net/?retryWrites=true&w=majority';
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());  
 
 mongoose.connect(connection_url, (error, client) => {
@@ -20,31 +19,15 @@ mongoose.connect(connection_url, (error, client) => {
 });
 
 app.get('/', (req, res) => {
-    res.status(200).send("hello")
+    res.render('index.ejs')
 });
 
-app.get('/tinder/create-card', (req, res) => {
-    fs.readFile('index.html', (error, data) => {
-        if (data) {
-            res.writeHead(200, { 'Content-type': 'text' })
-            res.write(data);
-            res.end();
-        } else if (error) {
-            res.write('Error');
-            res.end();
-        }
-    })
+app.get('/login', (req, res) => {
+    res.render('login.ejs')
 });
 
-app.post('/tinder/cards', (req, res) => {
-    const dbCard = req.body;
-    cards.create(dbCard, (err, data) => {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.status(201).send(data);
-        }
-    });
+app.get('/signup', (req, res) => {
+    res.render('signup.ejs')
 });
 
 app.get('/tinder/cards', (req, res) => {
@@ -63,6 +46,17 @@ app.get('*', function (req, res) {
     <h2>Sorry, this is an invalid URL</h2>
     </div>`)
     res.end();
+});
+
+app.post('/tinder/cards', (req, res) => {
+    const dbCard = req.body;
+    cards.create(dbCard, (err, data) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(201).send(data);
+        }
+    });
 });
 
 app.listen(port, () => {
