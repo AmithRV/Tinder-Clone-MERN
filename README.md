@@ -5,5 +5,5 @@
 # 
 # BACKEND
 ---
-# ADD DATA : https://tinder-clone-backend-nodejs-11.herokuapp.com/tinder/create-card
+# ADD DATA : https://tinder-clone-backend-nodejs-11.herokuapp.com
 # AVAILABLE DATA : https://tinder-clone-backend-nodejs-11.herokuapp.com/tinder/cards
