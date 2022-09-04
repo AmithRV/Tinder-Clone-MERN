@@ -21,6 +21,8 @@ function TinderCards() {
     }, []);
 
     const [lastDirection, setLastDirection] = useState();
+    console.log('lastDirection : ', lastDirection);
+    
     const [people, setPeople] = useState([]);
 
     const swiped = (direction, nameToDelete) => {

@@ -1,14 +1,18 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cards from './dbCards.js';
+import user from './users.js';
+
 import cors from 'cors';
+import jsonwebtoken from 'jsonwebtoken'
 
 const app = express();
 const port = process.env.PORT || 8001;
 const connection_url = 'mongodb+srv://Amith:Amith123@cluster0.all4ehi.mongodb.net/?retryWrites=true&w=majority';
 
-app.use(express.urlencoded({ extended: false }));
-app.use(cors());  
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.json());
 
 mongoose.connect(connection_url, (error, client) => {
     if (error) {
@@ -23,6 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
+    console.log('req : ', req.url)
     res.render('login.ejs')
 });
 
@@ -48,9 +53,6 @@ app.get('*', function (req, res) {
     res.end();
 });
 
-
-
-
 app.post('/tinder/cards', (req, res) => {
     const dbCard = req.body;
     cards.create(dbCard, (err, data) => {
@@ -60,6 +62,10 @@ app.post('/tinder/cards', (req, res) => {
             res.status(201).send(data);
         }
     });
+});
+
+app.post('/login', (req, res) => {
+    res.end();
 });
 
 app.listen(port, () => {
